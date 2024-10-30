@@ -8,7 +8,7 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        // primary: '#2563eb',
+        primary: '#2563eb',
         // secondary: {
         //   '600': '#475569',
         //   '600-dark': '#94a3b8',
