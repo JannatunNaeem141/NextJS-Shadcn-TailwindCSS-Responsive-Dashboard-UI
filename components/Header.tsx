@@ -1,3 +1,4 @@
+import FullScreenToggle from './full-screen';
 import ProfileInfo from './ProfileInfo';
 
 interface HeaderProps {
@@ -20,7 +21,8 @@ export default function Header({ isSidebarCollapsed, setIsSidebarCollapsed, isSh
             </div>
           </button>
         </div>
-        <div className="flex items-center ">
+        <div className="flex items-center gap-2">
+          <FullScreenToggle />
           <ProfileInfo />
           <button onClick={() => setIsSheetOpen(true)} className="xl:hidden p-4">
             <div className="flex flex-col justify-between w-[20px] h-[16px] transform transition-all duration-300 origin-center overflow-hidden rotate-180">

@@ -9,6 +9,9 @@
 .bg-card {
   @apply bg-white dark:bg-[#1f2937];
 }
+.bg-accent-100 {
+  @apply bg-[#f1f5f9] dark:bg-[#334155];
+}
 .text-accent-900 {
   @apply text-[#0f172a] dark:text-[#f1f5f9];
 }
@@ -20,6 +23,9 @@
 }
 .text-accent-600 {
   @apply text-[#475569] dark:text-[#94a3b8];
+}
+.text-accent-500 {
+  @apply text-[#64748b] dark:text-[#94a3b8];
 }
 .text-primary {
   @apply text-[#3b82f6];
