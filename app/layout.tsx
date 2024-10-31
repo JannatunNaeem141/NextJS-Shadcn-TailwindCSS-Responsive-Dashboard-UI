@@ -1,5 +1,7 @@
+import { SiteThemeProviders } from '@/providers/theme.provider';
 import { Inter } from '@next/font/google';
 import type { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
 import './globals.css';
 
 const inter = Inter({
@@ -8,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'VPA-Frontend',
-  description: 'This is VPA-Frontend dashboard.',
+  title: 'NextJS + Shadcn Dashboard',
+  description: 'This is dashboard made with NextJS + Shadcn.',
 };
 
 export default function RootLayout({
@@ -19,7 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        <SiteThemeProviders>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+          </ThemeProvider>
+        </SiteThemeProviders>
+      </body>
     </html>
   );
 }
