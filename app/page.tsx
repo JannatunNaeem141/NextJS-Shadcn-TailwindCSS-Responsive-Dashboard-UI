@@ -14,7 +14,7 @@ export default function Home() {
       <div className={`${isSidebarCollapsed ? 'xl:ml-[96px]' : 'xl:ml-[272px]'} w-full transition-margin duration-300`}>
         <div className="sm:p-6 p-3 flex flex-col justify-between w-full min-h-svh">
           <Header isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed} isSheetOpen={isSheetOpen} setIsSheetOpen={setIsSheetOpen} />
-          <main className="flex-1 mt-6 bg-blue-50 overflow-y-auto"></main>
+          <main className="flex-1 sm:mt-6 mt-3 bg-blue-50 overflow-y-auto"></main>
           <Footer />
         </div>
       </div>
