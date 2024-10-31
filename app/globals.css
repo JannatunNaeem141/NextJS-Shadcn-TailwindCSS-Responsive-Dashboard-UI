@@ -36,3 +36,25 @@ body {
 .border-default {
   @apply border-[#e2e8f0] dark:border-[#334155];
 }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #dadbde !important;
+  border-radius: 10px !important;
+  transition: all !important;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #374151 !important;
+  border-radius: 10px !important;
+  transition: all !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cacbce !important;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #374151ca !important;
+}
