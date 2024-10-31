@@ -1,7 +1,8 @@
-import Link from 'next/link';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu';
 import userAvatar from '@/public/images/user-avatar.png';
 import Image from 'next/image';
+import Link from 'next/link';
+import { PiGear, PiPower, PiUser } from 'react-icons/pi';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu';
 
 export default function ProfileInfo() {
   return (
@@ -15,31 +16,29 @@ export default function ProfileInfo() {
         <DropdownMenuLabel className="flex gap-2 items-center mb-1 p-3">
           <Image src={userAvatar} alt="User Avatar" width={36} height={36} className="rounded-full" />
           <div>
-            <div className="text-sm font-medium text-default-800 capitalize">User name</div>
-            <Link href='#' className="text-xs text-default-600 hover:text-primary">
+            <div className="text-sm font-medium text-accent-800 capitalize">User name</div>
+            <Link href="#" className="text-xs text-accent-600 hover:text-primary">
               example@gmail.com
             </Link>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuGroup>
-          {[
-            {
-              name: 'profile',
-              icon: 'heroicons:user',
-              href: '/profile',
-            },
-          ].map((item, index) => (
-            <Link href={item.href} key={`info-menu-${index}`} className="cursor-pointer">
-              <DropdownMenuItem className="flex items-center gap-2 text-sm font-medium text-default-600 capitalize px-3 py-1.5 dark:hover:bg-background cursor-pointer">
-                {/* <Icon icon={item.icon} className="w-4 h-4" /> */}
-                {item.name}
-              </DropdownMenuItem>
-            </Link>
-          ))}
+          <Link href="#" className="cursor-pointer">
+            <DropdownMenuItem className="flex items-center gap-2 text-sm font-medium text-accent-600 capitalize px-3 py-1.5 hover:!bg-[#e2e8f0] dark:hover:!bg-[#334155] cursor-pointer">
+              <PiUser />
+              Profile
+            </DropdownMenuItem>
+          </Link>
+          <Link href="#" className="cursor-pointer">
+            <DropdownMenuItem className="flex items-center gap-2 text-sm font-medium text-accent-600 capitalize px-3 py-1.5 hover:!bg-[#e2e8f0] dark:hover:!bg-[#334155] cursor-pointer">
+              <PiGear />
+              Settings
+            </DropdownMenuItem>
+          </Link>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator className="mb-0 dark:bg-background" />
-        <DropdownMenuItem className="flex items-center gap-2 text-sm font-medium text-default-600 capitalize my-1 px-3 dark:hover:bg-background cursor-pointer">
-          {/* <Icon icon="heroicons:power" className="w-4 h-4" /> */}
+        <DropdownMenuSeparator className="mb-0 dark:bg-[#334155]" />
+        <DropdownMenuItem className="flex items-center gap-2 text-sm font-medium text-accent-600 capitalize my-1 px-3 hover:!bg-[#e2e8f0] dark:hover:!bg-[#334155] cursor-pointer">
+          <PiPower />
           Log out
         </DropdownMenuItem>
       </DropdownMenuContent>

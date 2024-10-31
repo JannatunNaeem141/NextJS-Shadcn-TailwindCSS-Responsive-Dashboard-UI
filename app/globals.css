@@ -12,6 +12,9 @@
 .text-accent-900 {
   @apply text-[#0f172a] dark:text-[#f1f5f9];
 }
+.text-accent-800 {
+  @apply text-[#1e293b] dark:text-[#e2e8f0];
+}
 .text-accent-700 {
   @apply text-[#334155] dark:text-[#cbd5e1];
 }
