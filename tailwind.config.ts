@@ -8,16 +8,17 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        primary: '#2563eb',
-        // secondary: {
-        //   '600': '#475569',
-        //   '600-dark': '#94a3b8',
-        //   '700': '#334155',
-        //   '700-dark': '#cbd5e1',
-        //   '900': '#0f172a',
-        //   '900-dark': '#f1f5f9',
-        // },
-        // muted: '#64748b',
+        primary: 'var(--primary)',
+        accent: {
+          100: 'var(--accent-100)',
+          500: 'var(--accent-500)',
+          600: 'var(--accent-600)',
+          700: 'var(--accent-700)',
+          800: 'var(--accent-800)',
+          900: 'var(--accent-900)',
+        },
+        card: 'var(--card)',
+        muted: 'var(--muted)',
       },
       borderRadius: {
         lg: 'var(--radius)',
