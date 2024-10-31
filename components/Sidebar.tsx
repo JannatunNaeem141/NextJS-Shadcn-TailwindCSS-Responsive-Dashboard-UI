@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { PiGearDuotone, PiPhoneDuotone } from 'react-icons/pi';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from './ui/sheet';
 
 interface SidebarProps {
@@ -7,6 +9,61 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ isSidebarCollapsed, isSheetOpen, setIsSheetOpen }: SidebarProps) {
+  const navLinks = [
+    { label: 'Label 1' },
+    {
+      navItem: 'Dashboard',
+      icon: '',
+      child: [
+        {
+          title: 'Dropdown item 1',
+          href: '/link',
+        },
+        {
+          title: 'Dropdown item 2',
+          href: '/link',
+        },
+        {
+          title: 'Dropdown item 3',
+          href: '/link',
+        },
+      ],
+    },
+    {
+      navItem: 'Mails',
+      icon: '',
+      href: '/link',
+    },
+    {
+      navItem: 'Contacts',
+      icon: '',
+      href: '/link',
+    },
+    { label: 'Label 2' },
+    {
+      navItem: 'Peoples',
+      icon: '',
+      href: '/link',
+    },
+    {
+      navItem: 'Settings',
+      icon: '',
+      child: [
+        {
+          title: 'Dropdown item 1',
+          href: '/link',
+        },
+        {
+          title: 'Dropdown item 2',
+          href: '/link',
+        },
+        {
+          title: 'Dropdown item 3',
+          href: '/link',
+        },
+      ],
+    },
+  ];
   return (
     <>
       {/* Sidebar at XL device */}
@@ -18,8 +75,18 @@ export default function Sidebar({ isSidebarCollapsed, isSheetOpen, setIsSheetOpe
             <div className={`${isSidebarCollapsed ? 'hidden' : 'block'}`}>Logo</div>
           </div>
           {/* Nav Links */}
-          <div className="h-full flex-1 overflow-y-auto sm:p-4 p-3">
-            <p className="h-44 bg-gray-700">a</p>
+          <div className="h-full flex-1 overflow-y-auto sm:px-4 px-3 space-y-1">
+            {/* label */}
+            <h4 className="text-default-900 font-semibold uppercase mb-3 sm:mt-4 mt-3 text-xs">Menu</h4>
+
+            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded cursor-pointer text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white dark:hover:text-[#0f172a]">
+              <PiPhoneDuotone className="!size-5" />
+              Contacts
+            </Link>
+            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded cursor-pointer text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white dark:hover:text-[#0f172a]">
+              <PiGearDuotone className="!size-5" />
+              Settings
+            </Link>
           </div>
         </div>
       </aside>
