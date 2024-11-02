@@ -6,10 +6,11 @@ import { useState } from 'react';
 
 export default function Home() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [onHoverSidebarCollapsed, setOnHoverSidebarCollapsed] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   return (
     <div className="flex">
-      <Sidebar isSidebarCollapsed={isSidebarCollapsed} isSheetOpen={isSheetOpen} setIsSheetOpen={setIsSheetOpen} />
+      <Sidebar isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed} onHoverSidebarCollapsed={onHoverSidebarCollapsed} setOnHoverSidebarCollapsed={setOnHoverSidebarCollapsed} isSheetOpen={isSheetOpen} setIsSheetOpen={setIsSheetOpen} />
 
       <div className={`${isSidebarCollapsed ? 'xl:ml-[96px]' : 'xl:ml-[272px]'} w-full transition-margin duration-300`}>
         <div className="sm:p-6 p-3 flex flex-col justify-between w-full min-h-svh">
