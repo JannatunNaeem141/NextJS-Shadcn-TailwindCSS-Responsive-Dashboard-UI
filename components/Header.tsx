@@ -21,11 +21,6 @@ export default function Header({ isSidebarCollapsed, setIsSidebarCollapsed, isSh
               <div className={`bg-accent-800 h-[2px] transform transition-all duration-300 origin-left delay-150 ${isSidebarCollapsed && '-rotate-[43deg] w-[11px]'}`}></div>
             </div>
           </button>
-        </div>
-        <div className="flex items-center gap-2">
-          <FullScreenToggle />
-          <ThemeButton />
-          <ProfileInfo />
           <button onClick={() => setIsSheetOpen(true)} className="xl:hidden p-4">
             <div className="flex flex-col justify-between w-[20px] h-[16px] transform transition-all duration-300 origin-center overflow-hidden rotate-180">
               <div className={`bg-accent-800 h-[2px] transform transition-all duration-300 origin-left delay-150 ${isSheetOpen && 'rotate-[42deg] w-[11px]'}`}></div>
@@ -33,6 +28,11 @@ export default function Header({ isSidebarCollapsed, setIsSidebarCollapsed, isSh
               <div className={`bg-accent-800 h-[2px] transform transition-all duration-300 origin-left delay-150 ${isSheetOpen && '-rotate-[43deg] w-[11px]'}`}></div>
             </div>
           </button>
+        </div>
+        <div className="flex items-center gap-2">
+          <FullScreenToggle />
+          <ThemeButton />
+          <ProfileInfo />
         </div>
       </div>
     </header>
