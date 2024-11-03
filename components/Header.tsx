@@ -5,16 +5,26 @@ import ThemeButton from './theme-button';
 interface HeaderProps {
   isSidebarCollapsed: boolean;
   setIsSidebarCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenDropdown: React.Dispatch<React.SetStateAction<boolean>>;
+  onHoverOpenDropdown: boolean;
   isSheetOpen: boolean;
   setIsSheetOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Header({ isSidebarCollapsed, setIsSidebarCollapsed, isSheetOpen, setIsSheetOpen }: HeaderProps) {
+export default function Header({ isSidebarCollapsed, setIsSidebarCollapsed, onHoverOpenDropdown, setOpenDropdown, isSheetOpen, setIsSheetOpen }: HeaderProps) {
   return (
     <header className="bg-card w-full py-4 sm:px-6 px-3 rounded-md border border-default shadow-md sticky sm:top-6 top-3">
       <div className="flex justify-between items-center gap-5">
         <div>
-          <button onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)} className="xl:block hidden">
+          <button
+            onClick={() => {
+              if (!isSidebarCollapsed) {
+                setOpenDropdown(false);
+              } else if (onHoverOpenDropdown) setOpenDropdown(true);
+              setIsSidebarCollapsed(!isSidebarCollapsed);
+            }}
+            className="xl:block hidden"
+          >
             <div className="flex flex-col justify-between w-[20px] h-[16px] transform transition-all duration-300 origin-center overflow-hidden rotate-180">
               <div className={`bg-accent-800 h-[2px] transform transition-all duration-300 origin-left delay-150 ${isSidebarCollapsed && 'rotate-[42deg] w-[11px]'}`}></div>
               <div className={`bg-accent-800 h-[2px] w-7 rounded transform transition-all duration-300 ${isSidebarCollapsed && 'hidden'}`}></div>
