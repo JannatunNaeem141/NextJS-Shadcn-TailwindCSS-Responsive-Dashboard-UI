@@ -10,9 +10,66 @@ export default function Home() {
   const [onHoverOpenDropdown, setOnHoverOpenDropdown] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+
+  // const navLinks = [
+  //   { label: 'Label 1' },
+  //   {
+  //     navItem: 'Dashboard',
+  //     icon: '',
+  //     child: [
+  //       {
+  //         title: 'Dropdown item 1',
+  //         href: '/link',
+  //       },
+  //       {
+  //         title: 'Dropdown item 2',
+  //         href: '/link',
+  //       },
+  //       {
+  //         title: 'Dropdown item 3',
+  //         href: '/link',
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     navItem: 'Mails',
+  //     icon: '',
+  //     href: '/link',
+  //   },
+  //   {
+  //     navItem: 'Contacts',
+  //     icon: '',
+  //     href: '/link',
+  //   },
+  //   { label: 'Label 2' },
+  //   {
+  //     navItem: 'Peoples',
+  //     icon: '',
+  //     href: '/link',
+  //   },
+  //   {
+  //     navItem: 'Settings',
+  //     icon: '',
+  //     child: [
+  //       {
+  //         title: 'Dropdown item 1',
+  //         href: '/link',
+  //       },
+  //       {
+  //         title: 'Dropdown item 2',
+  //         href: '/link',
+  //       },
+  //       {
+  //         title: 'Dropdown item 3',
+  //         href: '/link',
+  //       },
+  //     ],
+  //   },
+  // ];
+
   return (
     <div className="flex">
-      <Sidebar isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed} onHoverSidebarCollapsed={onHoverSidebarCollapsed} setOnHoverSidebarCollapsed={setOnHoverSidebarCollapsed} onHoverOpenDropdown={onHoverOpenDropdown} setOnHoverOpenDropdown={setOnHoverOpenDropdown} openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} isSheetOpen={isSheetOpen} setIsSheetOpen={setIsSheetOpen} />
+      <Sidebar isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed} onHoverSidebarCollapsed={onHoverSidebarCollapsed} setOnHoverSidebarCollapsed={setOnHoverSidebarCollapsed} onHoverOpenDropdown={onHoverOpenDropdown} setOnHoverOpenDropdown={setOnHoverOpenDropdown} openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} isSheetOpen={isSheetOpen} setIsSheetOpen={setIsSheetOpen}  />
 
       <div className={`${isSidebarCollapsed ? 'xl:ml-[96px]' : 'xl:ml-[272px]'} w-full transition-margin duration-300`}>
         <div className="sm:p-6 p-3 flex flex-col justify-between w-full min-h-svh">
