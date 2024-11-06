@@ -135,7 +135,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
                   setOpenDropdown(!openDropdown);
                   setOnHoverOpenDropdown(!openDropdown);
                 }}
-                className={`flex ${isSidebarCollapsed ? 'justify-center' : 'justify-between'} items-center text-sm font-medium capitalize px-[10px] py-3 rounded cursor-pointer text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white dark:hover:text-[#0f172a] ${openDropdown && !isSidebarCollapsed ? 'bg-primary text-white dark:text-[#0f172a]' : ''}`}
+                className={`flex ${isSidebarCollapsed ? 'justify-center' : 'justify-between'} items-center text-sm font-medium capitalize px-[10px] py-3 rounded cursor-pointer text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white ${openDropdown && !isSidebarCollapsed && 'bg-primary text-white dark:text-[#0f172a]'}`}
               >
                 <div className="flex items-center gap-3">
                   <span className={`flex-grow-0 ${isSidebarCollapsed && 'w-full flex justify-center'}`}>

@@ -72,7 +72,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
 
                   {/* Nav links */}
                   {!item?.child && item?.navItem && (
-                    <Link href={`${item?.href}`} className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white dark:hover:text-[#0f172a]">
+                    <Link href={`${item?.href}`} className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white">
                       <span className={`flex-grow-0 ${isSidebarCollapsed && 'w-full flex justify-center'}`}>
                         <PiPhoneDuotone className="!size-5" />
                       </span>
@@ -88,7 +88,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
                           setOpenDropdown(!openDropdown);
                           setOnHoverOpenDropdown(!openDropdown);
                         }}
-                        className={`flex ${isSidebarCollapsed ? 'justify-center' : 'justify-between'} items-center text-sm font-medium capitalize px-[10px] py-3 rounded cursor-pointer text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white dark:hover:text-[#0f172a] ${openDropdown && !isSidebarCollapsed ? 'bg-primary text-white dark:text-[#0f172a]' : ''}`}
+                        className={`flex ${isSidebarCollapsed ? 'justify-center' : 'justify-between'} items-center text-sm font-medium capitalize px-[10px] py-3 rounded cursor-pointer text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white ${openDropdown && !isSidebarCollapsed && 'bg-primary text-white dark:text-[#0f172a]'}`}
                       >
                         <div className="flex items-center gap-3">
                           <span className={`flex-grow-0 ${isSidebarCollapsed && 'w-full flex justify-center'}`}>
@@ -138,7 +138,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
             <h4 className="text-default-900 font-semibold uppercase mb-3 sm:mt-4 mt-3 text-xs">Menu</h4>
 
             {/* Nav links */}
-            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white dark:hover:text-[#0f172a]">
+            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white">
               <span className="flex-grow-0">
                 <PiPhoneDuotone className="!size-5" />
               </span>
@@ -147,7 +147,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
 
             {/* Dropdown menu */}
             <div>
-              <div onClick={() => setOpenDropdown(!openDropdown)} className={`flex justify-between items-center text-sm font-medium capitalize px-[10px] py-3 rounded cursor-pointer text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white dark:hover:text-[#0f172a] ${openDropdown ? 'bg-primary text-white dark:text-[#0f172a]' : ''}`}>
+              <div onClick={() => setOpenDropdown(!openDropdown)} className={`flex justify-between items-center text-sm font-medium capitalize px-[10px] py-3 rounded cursor-pointer text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white ${openDropdown && 'bg-primary text-white dark:text-[#0f172a]'}`}>
                 <div className="flex items-center gap-3">
                   <span className="flex-grow-0">
                     <PiGearDuotone className="!size-5" />
@@ -172,7 +172,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
               {/* )} */}
             </div>
 
-            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white dark:hover:text-[#0f172a]">
+            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white">
               <span className="flex-grow-0">
                 <PiPhoneDuotone className="!size-5" />
               </span>
