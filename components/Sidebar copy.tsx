@@ -40,7 +40,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
     <>
       {/* Sidebar at XL device */}
       <aside
-        className="xl:block hidden fixed top-0 bottom-0 sm:p-6 p-3"
+        className="xl:block hidden fixed top-0 bottom-0 sm:py-6 py-3 sm:pl-6 pl-3"
         onMouseEnter={() => {
           if (isSidebarCollapsed && !onHoverSidebarCollapsed) {
             setIsSidebarCollapsed(false);
