@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+:root {
+  --primary: #2563eb;
+  --accent-500: #64748b;
+  --accent-600: #475569;
+  --accent-700: #334155;
+  --accent-800: #1e293b;
+  --accent-900: #0f172a;
+  --accent-100: #f1f5f9;
+  --card: #ffffff;
+  --muted: #64748b;
+}
+
+.dark {
+  --accent-500: #94a3b8;
+  --accent-600: #94a3b8;
+  --accent-700: #cbd5e1;
+  --accent-800: #e2e8f0;
+  --accent-900: #f1f5f9;
+  --accent-100: #334155;
+  --card: #1f2937;
+  --muted: #9ca3af;
+}
+
+body {
+  @apply bg-[#EEF1F9] dark:bg-[#0F172A];
+}
+
+.border-default {
+  @apply border-[#e2e8f0] dark:border-[#334155];
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #dadbde !important;
+  border-radius: 10px !important;
+  transition: all !important;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #374151 !important;
+  border-radius: 10px !important;
+  transition: all !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cacbce !important;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #374151ca !important;
+}

@@ -1,21 +1,17 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import { SiteThemeProviders } from '@/providers/theme.provider';
+import { Inter } from '@next/font/google';
+import type { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
+import '@/styles/globals.css';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
 });
 
 export const metadata: Metadata = {
-  title: "VPA-Frontend",
-  description: "This is VPA-Frontend dashboard.",
+  title: 'NextJS + Shadcn Dashboard',
+  description: 'This is dashboard made with NextJS + Shadcn.',
 };
 
 export default function RootLayout({
@@ -25,10 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${inter.className} antialiased`}>
+        <SiteThemeProviders>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+          </ThemeProvider>
+        </SiteThemeProviders>
       </body>
     </html>
   );
