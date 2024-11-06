@@ -1,3 +1,9 @@
+import Hero from '@/components/LandingPage/Hero';
+
 export default function Home() {
-  return <div>Home Page</div>;
+  return (
+    <div>
+      <Hero />
+    </div>
+  );
 }
