@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import { PiGearDuotone, PiPhoneDuotone } from 'react-icons/pi';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from './ui/sheet';
@@ -17,6 +18,7 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onHoverSidebarCollapsed, setOnHoverSidebarCollapsed, onHoverOpenDropdown, setOnHoverOpenDropdown, openDropdown, setOpenDropdown, isSheetOpen, setIsSheetOpen }: SidebarProps) {
+  const currentPath = usePathname();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     if (openDropdown && dropdownRef.current) {
@@ -25,6 +27,11 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
       dropdownRef.current.style.maxHeight = '0px';
     }
   }, [openDropdown]);
+
+  // Close sheet on route change
+  useEffect(() => {
+    setIsSheetOpen(false);
+  }, [currentPath, setIsSheetOpen]);
 
   const navLinks = [
     { label: 'Label 1' },
@@ -114,7 +121,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
             {!isSidebarCollapsed && <h4 className="text-default-900 font-semibold uppercase mb-3 sm:mt-4 mt-3 text-xs">Menu</h4>}
 
             {/* Nav links */}
-            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white dark:hover:text-[#0f172a]">
+            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white">
               <span className={`flex-grow-0 ${isSidebarCollapsed && 'w-full flex justify-center'}`}>
                 <PiPhoneDuotone className="!size-5" />
               </span>
@@ -154,7 +161,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
               </div>
             </div>
 
-            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white dark:hover:text-[#0f172a]">
+            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white">
               <span className={`flex-grow-0 ${isSidebarCollapsed && 'w-full flex justify-center'}`}>
                 <PiPhoneDuotone className="!size-5" />
               </span>
@@ -180,7 +187,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
             <h4 className="text-default-900 font-semibold uppercase mb-3 sm:mt-4 mt-3 text-xs">Menu</h4>
 
             {/* Nav links */}
-            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white dark:hover:text-[#0f172a]">
+            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white">
               <span className="flex-grow-0">
                 <PiPhoneDuotone className="!size-5" />
               </span>
@@ -214,7 +221,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
               {/* )} */}
             </div>
 
-            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white dark:hover:text-[#0f172a]">
+            <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-[10px] py-3 rounded text-[#334155] dark:text-[#cbd5e1] hover:bg-primary hover:text-white">
               <span className="flex-grow-0">
                 <PiPhoneDuotone className="!size-5" />
               </span>
