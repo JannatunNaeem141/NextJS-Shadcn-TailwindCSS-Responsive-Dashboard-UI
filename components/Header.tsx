@@ -1,4 +1,4 @@
-import FullScreenToggle from './full-screen';
+import FullScreenToggle from './FullScreenToggle';
 import ProfileInfo from './ProfileInfo';
 import ThemeButton from './theme-button';
 
