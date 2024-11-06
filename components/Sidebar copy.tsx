@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { PiGearDuotone, PiPhoneDuotone } from 'react-icons/pi';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from './ui/sheet';
+import { usePathname } from 'next/navigation';
 
 interface NavLink {
   label?: string;
@@ -27,6 +28,7 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onHoverSidebarCollapsed, setOnHoverSidebarCollapsed, onHoverOpenDropdown, setOnHoverOpenDropdown, openDropdown, setOpenDropdown, isSheetOpen, setIsSheetOpen, navLinks }: SidebarProps) {
+  const currentPath = usePathname();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     if (openDropdown && dropdownRef.current) {
@@ -35,6 +37,11 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
       dropdownRef.current.style.maxHeight = '0px';
     }
   }, [openDropdown]);
+
+  // Close sheet on route change
+  useEffect(() => {
+    setIsSheetOpen(false);
+  }, [currentPath, setIsSheetOpen]);
 
   return (
     <>
