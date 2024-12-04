@@ -1,80 +1,51 @@
 'use client';
 import { useState } from 'react';
-import Header from './Header';
 import Footer from './Footer';
+import Header from './Header';
 import Sidebar from './Sidebar';
-import SidebarWithoutDynamic from './SidebarWithoutDynamic';
+import { PiGearDuotone, PiPhoneDuotone } from 'react-icons/pi';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [onHoverSidebarCollapsed, setOnHoverSidebarCollapsed] = useState(false);
-  const [onHoverOpenDropdown, setOnHoverOpenDropdown] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Label 1' },
+    { label: 'Label' },
     {
       navItem: 'Dashboard',
-      icon: '',
+      icon: <PiGearDuotone className="!size-5" />,
       child: [
-        {
-          title: 'Dropdown item 1',
-          href: '/link',
-        },
-        {
-          title: 'Dropdown item 2',
-          href: '/link',
-        },
-        {
-          title: 'Dropdown item 3',
-          href: '/link',
-        },
+        { title: 'Dropdown item', href: '#' },
+        { title: 'Dropdown item', href: '#' },
+        { title: 'Dropdown item', href: '#' },
       ],
     },
     {
       navItem: 'Mails',
-      icon: '',
-      href: '/link',
+      icon: <PiPhoneDuotone className="!size-5" />,
+      href: '#',
     },
-    {
-      navItem: 'Contacts',
-      icon: '',
-      href: '/link',
-    },
-    { label: 'Label 2' },
-    {
-      navItem: 'Peoples',
-      icon: '',
-      href: '/link',
-    },
+    { label: 'Label' },
     {
       navItem: 'Settings',
-      icon: '',
+      icon: <PiGearDuotone className="!size-5" />,
       child: [
-        {
-          title: 'Dropdown item 1',
-          href: '/link',
-        },
-        {
-          title: 'Dropdown item 2',
-          href: '/link',
-        },
-        {
-          title: 'Dropdown item 3',
-          href: '/link',
-        },
+        { title: 'Dropdown item', href: '#' },
+        { title: 'Dropdown item', href: '#' },
+        { title: 'Dropdown item', href: '#' },
       ],
     },
   ];
 
   return (
     <div className="flex">
-      <Sidebar isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed} onHoverSidebarCollapsed={onHoverSidebarCollapsed} setOnHoverSidebarCollapsed={setOnHoverSidebarCollapsed} onHoverOpenDropdown={onHoverOpenDropdown} setOnHoverOpenDropdown={setOnHoverOpenDropdown} openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} isSheetOpen={isSheetOpen} setIsSheetOpen={setIsSheetOpen} />
+      <Sidebar isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed} onHoverSidebarCollapsed={onHoverSidebarCollapsed} setOnHoverSidebarCollapsed={setOnHoverSidebarCollapsed} openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} isSheetOpen={isSheetOpen} setIsSheetOpen={setIsSheetOpen} navLinks={navLinks} />
 
       <div className={`${isSidebarCollapsed ? 'xl:ml-[96px]' : 'xl:ml-[272px]'} w-full transition-margin duration-300`}>
         <div className="flex flex-col justify-between w-full min-h-svh">
-          <Header isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed} onHoverOpenDropdown={onHoverOpenDropdown} setOpenDropdown={setOpenDropdown} isSheetOpen={isSheetOpen} setIsSheetOpen={setIsSheetOpen} />
+          <Header isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed} setOpenDropdown={setOpenDropdown} isSheetOpen={isSheetOpen} setIsSheetOpen={setIsSheetOpen} />
           <main className="flex-1 sm:mt-6 mt-3 overflow-y-auto sm:px-6 px-3">{children}</main>
           <Footer />
         </div>

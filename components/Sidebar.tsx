@@ -4,6 +4,15 @@ import { useEffect, useRef, useState } from 'react';
 import { PiGearDuotone, PiPhoneDuotone } from 'react-icons/pi';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from './ui/sheet';
 
+interface NavLink {
+  label?: string;
+  navItem?: string;
+  href?: string;
+  icon?: string;
+  title?: string;
+  child?: NavLink[];
+}
+
 interface SidebarProps {
   isSidebarCollapsed: boolean;
   setIsSidebarCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,54 +20,36 @@ interface SidebarProps {
   setOnHoverSidebarCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
   openDropdown: boolean;
   setOpenDropdown: React.Dispatch<React.SetStateAction<boolean>>;
-  onHoverOpenDropdown: boolean;
-  setOnHoverOpenDropdown: React.Dispatch<React.SetStateAction<boolean>>;
   isSheetOpen: boolean;
   setIsSheetOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  navLinks: NavLink[];
 }
 
-export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onHoverSidebarCollapsed, setOnHoverSidebarCollapsed, onHoverOpenDropdown, setOnHoverOpenDropdown, openDropdown, setOpenDropdown, isSheetOpen, setIsSheetOpen }: SidebarProps) {
+export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onHoverSidebarCollapsed, setOnHoverSidebarCollapsed, openDropdown, setOpenDropdown, isSheetOpen, setIsSheetOpen, navLinks }: SidebarProps) {
   const currentPath = usePathname();
+  const [openDropdownsHistory, setOpenDropdownsHistory] = useState<number[]>([]);
   const [openDropdowns, setOpenDropdowns] = useState<number[]>([]);
   const dropdownRefs = useRef<(HTMLDivElement | null)[]>([]);
-  // console.log(openDropdowns);
 
   // Close sheet on route change
   useEffect(() => {
     setIsSheetOpen(false);
   }, [currentPath, setIsSheetOpen]);
 
-  const navLinks = [
-    { label: 'Label 1' },
-    {
-      navItem: 'Dashboard',
-      icon: <PiGearDuotone className="!size-5" />,
-      child: [
-        { title: 'Dropdown item 1', href: '#' },
-        { title: 'Dropdown item 2', href: '#' },
-        { title: 'Dropdown item 3', href: '#' },
-      ],
-    },
-    {
-      navItem: 'Mails',
-      icon: <PiPhoneDuotone className="!size-5" />,
-      href: '#',
-    },
-    { label: 'Label 2' },
-    {
-      navItem: 'Settings',
-      icon: <PiGearDuotone className="!size-5" />,
-      child: [
-        { title: 'Dropdown item 1', href: '#' },
-        { title: 'Dropdown item 2', href: '#' },
-        { title: 'Dropdown item 3', href: '#' },
-      ],
-    },
-  ];
-
   const toggleDropdown = (index: number) => {
-    setOpenDropdowns((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
+    if (!isSidebarCollapsed) {
+      setOpenDropdowns((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
+      setOpenDropdownsHistory((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
+    }
   };
+
+  useEffect(() => {
+    if (isSidebarCollapsed) {
+      setOpenDropdowns([]);
+    } else {
+      setOpenDropdowns(openDropdownsHistory);
+    }
+  }, [isSidebarCollapsed]);
 
   useEffect(() => {
     openDropdowns.forEach((index) => {
@@ -132,7 +123,6 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
                           </span>
                         )}
                       </div>
-                      {/* {openDropdowns.includes(index) && ( */}
                       <div ref={(el) => (dropdownRefs.current[index] = el)} className="ml-4 pb-0 border-l-2 border-default overflow-hidden transition-all duration-300 ease-in-out transition-max-height" style={{ maxHeight: '0px' }}>
                         {item?.child?.map((child, childIndex) => (
                           <Link key={childIndex} href={child.href} className="flex items-center gap-3 text-sm font-medium capitalize px-3 py-2 rounded text-[#334155] dark:text-[#cbd5e1] hover:!text-primary">
@@ -140,7 +130,6 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
                           </Link>
                         ))}
                       </div>
-                      {/* )} */}
                     </div>
                   )}
                 </div>
