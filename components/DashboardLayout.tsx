@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
-import Sidebar from './Sidebar';
 import Header from './Header';
 import Footer from './Footer';
+import Sidebar from './Sidebar';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -11,65 +11,65 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [openDropdown, setOpenDropdown] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
-    // const navLinks = [
-  //   { label: 'Label 1' },
-  //   {
-  //     navItem: 'Dashboard',
-  //     icon: '',
-  //     child: [
-  //       {
-  //         title: 'Dropdown item 1',
-  //         href: '/link',
-  //       },
-  //       {
-  //         title: 'Dropdown item 2',
-  //         href: '/link',
-  //       },
-  //       {
-  //         title: 'Dropdown item 3',
-  //         href: '/link',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     navItem: 'Mails',
-  //     icon: '',
-  //     href: '/link',
-  //   },
-  //   {
-  //     navItem: 'Contacts',
-  //     icon: '',
-  //     href: '/link',
-  //   },
-  //   { label: 'Label 2' },
-  //   {
-  //     navItem: 'Peoples',
-  //     icon: '',
-  //     href: '/link',
-  //   },
-  //   {
-  //     navItem: 'Settings',
-  //     icon: '',
-  //     child: [
-  //       {
-  //         title: 'Dropdown item 1',
-  //         href: '/link',
-  //       },
-  //       {
-  //         title: 'Dropdown item 2',
-  //         href: '/link',
-  //       },
-  //       {
-  //         title: 'Dropdown item 3',
-  //         href: '/link',
-  //       },
-  //     ],
-  //   },
-  // ];
+  const navLinks = [
+    { label: 'Label 1' },
+    {
+      navItem: 'Dashboard',
+      icon: '',
+      child: [
+        {
+          title: 'Dropdown item 1',
+          href: '/link',
+        },
+        {
+          title: 'Dropdown item 2',
+          href: '/link',
+        },
+        {
+          title: 'Dropdown item 3',
+          href: '/link',
+        },
+      ],
+    },
+    {
+      navItem: 'Mails',
+      icon: '',
+      href: '/link',
+    },
+    {
+      navItem: 'Contacts',
+      icon: '',
+      href: '/link',
+    },
+    { label: 'Label 2' },
+    {
+      navItem: 'Peoples',
+      icon: '',
+      href: '/link',
+    },
+    {
+      navItem: 'Settings',
+      icon: '',
+      child: [
+        {
+          title: 'Dropdown item 1',
+          href: '/link',
+        },
+        {
+          title: 'Dropdown item 2',
+          href: '/link',
+        },
+        {
+          title: 'Dropdown item 3',
+          href: '/link',
+        },
+      ],
+    },
+  ];
 
   return (
     <div className="flex">
-      <Sidebar isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed} onHoverSidebarCollapsed={onHoverSidebarCollapsed} setOnHoverSidebarCollapsed={setOnHoverSidebarCollapsed} onHoverOpenDropdown={onHoverOpenDropdown} setOnHoverOpenDropdown={setOnHoverOpenDropdown} openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} isSheetOpen={isSheetOpen} setIsSheetOpen={setIsSheetOpen} />
+      <Sidebar isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed} onHoverSidebarCollapsed={onHoverSidebarCollapsed} setOnHoverSidebarCollapsed={setOnHoverSidebarCollapsed} onHoverOpenDropdown={onHoverOpenDropdown} setOnHoverOpenDropdown={setOnHoverOpenDropdown} openDropdown={openDropdown} setOpenDropdown={setOpenDropdown} isSheetOpen={isSheetOpen} setIsSheetOpen={setIsSheetOpen} navLinks={navLinks} />
 
       <div className={`${isSidebarCollapsed ? 'xl:ml-[96px]' : 'xl:ml-[272px]'} w-full transition-margin duration-300`}>
         <div className="flex flex-col justify-between w-full min-h-svh">
