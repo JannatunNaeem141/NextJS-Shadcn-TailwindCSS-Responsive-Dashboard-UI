@@ -83,7 +83,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
                       <span className={`flex-grow-0 ${isSidebarCollapsed && 'w-full flex justify-center'}`}>
                         <PiPhoneDuotone className="!size-5" />
                       </span>
-                      {!isSidebarCollapsed && <div className="text-box flex-grow">{item?.navItem}</div>}
+                      {!isSidebarCollapsed && <div className="flex-grow">{item?.navItem}</div>}
                     </Link>
                   )}
 
@@ -101,7 +101,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
                           <span className={`flex-grow-0 ${isSidebarCollapsed && 'w-full flex justify-center'}`}>
                             <PiGearDuotone className="!size-5" />
                           </span>
-                          {!isSidebarCollapsed && <div className="text-box flex-grow">{item?.navItem}</div>}
+                          {!isSidebarCollapsed && <div className="flex-grow">{item?.navItem}</div>}
                         </div>
                         {!isSidebarCollapsed && (
                           <span>
@@ -115,7 +115,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
                         {item?.child?.map((subItem, index) => {
                           return (
                             <Link key={index} href={`${subItem?.href}`} className="flex items-center gap-3 text-sm font-medium capitalize px-3 py-2 rounded text-[#334155] dark:text-[#cbd5e1] hover:!text-primary">
-                              <div className="text-box flex-grow">{subItem?.title}</div>
+                              <div className="flex-grow">{subItem?.title}</div>
                             </Link>
                           );
                         })}
@@ -149,7 +149,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
               <span className="flex-grow-0">
                 <PiPhoneDuotone className="!size-5" />
               </span>
-              <div className="text-box flex-grow">Contacts</div>
+              <div className="flex-grow">Contacts</div>
             </Link>
 
             {/* Dropdown menu */}
@@ -159,7 +159,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
                   <span className="flex-grow-0">
                     <PiGearDuotone className="!size-5" />
                   </span>
-                  <div className="text-box flex-grow">Settings</div>
+                  <div className="flex-grow">Settings</div>
                 </div>
                 <span>
                   <svg className={`size-5 transition-all duration-300 ${openDropdown && 'rotate-90'}`} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 20 20">
@@ -170,10 +170,10 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
               {/* {!isSidebarCollapsed && ( */}
               <div ref={dropdownRef} className={`ml-4 pb-0 border-l-2 border-default overflow-hidden transition-all duration-300 ease-in-out`} style={{ transitionProperty: 'max-height, opacity' }}>
                 <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-3 py-2 rounded text-[#334155] dark:text-[#cbd5e1] hover:!text-primary">
-                  <div className="text-box flex-grow">Contacts</div>
+                  <div className="flex-grow">Contacts</div>
                 </Link>
                 <Link href="#" className="flex items-center gap-3 text-sm font-medium capitalize px-3 py-2 rounded text-[#334155] dark:text-[#cbd5e1] hover:!text-primary">
-                  <div className="text-box flex-grow">Contacts</div>
+                  <div className="flex-grow">Contacts</div>
                 </Link>
               </div>
               {/* )} */}
@@ -183,7 +183,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
               <span className="flex-grow-0">
                 <PiPhoneDuotone className="!size-5" />
               </span>
-              <div className="text-box flex-grow">Contacts</div>
+              <div className="flex-grow">Contacts</div>
             </Link>
           </div>
         </SheetContent>
