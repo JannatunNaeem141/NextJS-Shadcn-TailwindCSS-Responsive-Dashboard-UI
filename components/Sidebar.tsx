@@ -9,7 +9,7 @@ interface NavLink {
   label?: string;
   navItem?: string;
   href?: string;
-  icon?: string;
+  icon?: React.ReactNode;
   title?: string;
   child?: NavLink[];
 }
@@ -131,9 +131,9 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
                           </span>
                         )}
                       </div>
-                      <div ref={(el) => (dropdownRefs.current[index] = el)} className="ml-4 pb-0 border-l-2 border-default overflow-hidden transition-all duration-300 ease-in-out transition-max-height" style={{ maxHeight: '0px' }}>
+                      <div ref={(el) => {dropdownRefs.current[index] = el}} className="ml-4 pb-0 border-l-2 border-default overflow-hidden transition-all duration-300 ease-in-out transition-max-height" style={{ maxHeight: '0px' }}>
                         {item?.child?.map((child, childIndex) => (
-                          <Link key={childIndex} href={child.href} className="flex items-center gap-3 text-sm font-medium capitalize px-3 py-2 rounded text-[#334155] dark:text-[#cbd5e1] hover:!text-primary">
+                          <Link key={childIndex} href={`${child?.href}`} className="flex items-center gap-3 text-sm font-medium capitalize px-3 py-2 rounded text-[#334155] dark:text-[#cbd5e1] hover:!text-primary">
                             <div className="flex-grow">{child.title}</div>
                           </Link>
                         ))}
