@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Dashboard - VPA-Frontend',
+  title: 'Dashboard',
 };
 
 export default function Dashboard() {

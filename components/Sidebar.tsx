@@ -1,3 +1,4 @@
+import useSettingsStore from '@/stores/settingsStore';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -30,6 +31,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
   const [openDropdownsHistory, setOpenDropdownsHistory] = useState<number[]>([]);
   const [openDropdowns, setOpenDropdowns] = useState<number[]>([]);
   const dropdownRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const allowMultipleDropdowns = useSettingsStore((state) => state.allowMultipleDropdowns);
 
   // Close sheet on route change
   useEffect(() => {
@@ -38,8 +40,14 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
 
   const toggleDropdown = (index: number) => {
     if (!isSidebarCollapsed) {
-      setOpenDropdowns((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
-      setOpenDropdownsHistory((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
+      if (allowMultipleDropdowns) {
+        setOpenDropdowns((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
+
+        setOpenDropdownsHistory((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]));
+      } else {
+        setOpenDropdowns((prev) => (prev.includes(index) ? [] : [index]));
+        setOpenDropdownsHistory((prev) => (prev.includes(index) ? [] : [index]));
+      }
     }
   };
 
@@ -49,7 +57,7 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
     } else {
       setOpenDropdowns(openDropdownsHistory);
     }
-  }, [isSidebarCollapsed]);
+  }, [isSidebarCollapsed, openDropdownsHistory]);
 
   useEffect(() => {
     openDropdowns.forEach((index) => {
