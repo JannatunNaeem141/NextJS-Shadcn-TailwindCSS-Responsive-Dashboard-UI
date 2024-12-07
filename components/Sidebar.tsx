@@ -50,19 +50,20 @@ export default function Sidebar({ isSidebarCollapsed, setIsSidebarCollapsed, onH
 
   // Make openDropdowns array empty/fill
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.innerWidth < 1280) {
-      if (!isSheetOpen) {
-        if (openDropdowns?.length > 0 || openDropdownsHistory?.length > 0) {
-          setOpenDropdowns([]);
-          setOpenDropdownsHistory([]);
-        }
-      }
-    } else if (isSidebarCollapsed) {
+    if (isSidebarCollapsed) {
       setOpenDropdowns([]);
     } else {
       setOpenDropdowns(openDropdownsHistory);
     }
-  }, [isSidebarCollapsed, openDropdownsHistory, isSheetOpen, openDropdowns]);
+  }, [isSidebarCollapsed, openDropdownsHistory]);
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 1280 && !isSheetOpen) {
+      if (openDropdowns?.length > 0 || openDropdownsHistory?.length > 0) {
+        setOpenDropdowns([]);
+        setOpenDropdownsHistory([]);
+      }
+    }
+  }, [isSheetOpen, openDropdowns, openDropdownsHistory]);
 
   // Manage Dropdown Height
   useEffect(() => {
