@@ -5,12 +5,11 @@ import ThemeButton from './theme-button';
 interface HeaderProps {
   isSidebarCollapsed: boolean;
   setIsSidebarCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
-  setOpenDropdown: React.Dispatch<React.SetStateAction<boolean>>;
   isSheetOpen: boolean;
   setIsSheetOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Header({ isSidebarCollapsed, setIsSidebarCollapsed, setOpenDropdown, isSheetOpen, setIsSheetOpen }: HeaderProps) {
+export default function Header({ isSidebarCollapsed, setIsSidebarCollapsed, isSheetOpen, setIsSheetOpen }: HeaderProps) {
   return (
     <header className="sm:pt-6 pt-3 sm:px-6 px-3 backdrop-blur rounded-b-md w-full sticky top-0 z-50">
       <div className="bg-card w-full py-4 sm:px-6 px-3 rounded-md border border-default shadow-md">
@@ -18,9 +17,6 @@ export default function Header({ isSidebarCollapsed, setIsSidebarCollapsed, setO
           <div>
             <button
               onClick={() => {
-                if (!isSidebarCollapsed) {
-                  setOpenDropdown(false);
-                }
                 setIsSidebarCollapsed(!isSidebarCollapsed);
               }}
               className="xl:block hidden"
