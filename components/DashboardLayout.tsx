@@ -4,6 +4,7 @@ import Footer from './Footer';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import { PiGearDuotone, PiPhoneDuotone } from 'react-icons/pi';
+import SiteSettings from './site-settings';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -49,6 +50,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <Footer />
         </div>
       </div>
+
+      <SiteSettings />
     </div>
   );
 }
